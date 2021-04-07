@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-</head>
-
-<body bgcolor = "orange">
+  <html>
+    <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <link href="../static/main.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+    <div id="wrapper">
     
-<form action = "/form_login" method = "post">
-    <h2></h2>Username:<br>
-    <input type ="text" name ='username'><br>
-    Password:<br>
-    <input name='password' ><br><br>
-
-<input type="submit" value="Login">
-</form>
-<h1 >{{info}}</h1>
-
+    <div class="form_div">
+    <p class="form_label">LOGIN FORM</p>
+    <form method="post" action="/form_login">
+    <p><input type="text" placeholder="Enter Username"></p>
+    <p><input type="password" placeholder="**********"></p>
+    <p><input type="submit" value="LOGIN"></p>
+    </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="form_div">
+    <p class="form_label">SIGNUP FORM</p>
+    <form method="post" action="/form_signup">
+    <p><input type="text" placeholder="Enter UserName"></p>
+    <p><input type="password" placeholder="**********"></p>
+    <p><input type="submit" value="SIGNUP"></p>
+    </form>
+    </div>
+    
+</div>
 </body>
 </html>
