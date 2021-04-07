@@ -1,128 +1,144 @@
-body, html {
-    margin: 0;
-    font-family: sans-serif;
+body
+{
+    margin:0 auto;
+    padding:0px;
+    text-align:center;
+    width:100%;
+    font-family: "Myriad Pro","Helvetica Neue",Helvetica,Arial,Sans-Serif;
+    background-color:#ECF0F1;
+}
+#wrapper
+{
+    margin:0 auto;
+    padding:0px;
+    text-align:center;
+    width:995px;
+}
+#wrapper h1
+{
+    margin-top:50px;
+    font-size:45px;
+    color:#424949;
+}
+#wrapper h1 p
+{
+font-size:18px;
+}
+.form_div
+{
+width:330px;
+margin-left:320px;
+padding:10px;
+background-color:#424949;
+}
+.form_div .form_label
+{
+margin:15px;
+margin-bottom:30px;
+font-size:25px;
+font-weight:bold;
+color:white;
+text-decoration:underline;
+}
+.form_div input[type="text"],input[type="password"]
+{
+width:230px;
+height:40px;
+border-radius:2px;
+font-size:17px;
+padding-left:5px;
+border:none;
+}
+.form_div input[type="submit"]
+{
+width:230px;
+height:40px;
+border:none;
+border-radius:2px;
+font-size:17px;
+background-color:#7F8C8D;
+border-bottom:3px solid #616A6B;
+color:white;
+font-weight:bold;
 }
 
-.content {
-    margin: 0 auto;
-    width: 400px;
+@media only screen and (min-width:700px) and (max-width:995px)
+{
+#wrapper
+{
+width:100%;
 }
-
-table, td, th {
-    border: 1px solid #aaa;
+#wrapper h1
+{
+font-size:30px;
 }
-
-table {
-    border-collapse: collapse;
-    width: 100%;
+.form_div
+{
+width:50%;
+margin-left:25%;
+padding-left:0px;
+padding-right:0px;
 }
-
-th {
-    height: 30px;
+.form_div input[type="text"],input[type="password"]
+{
+width:80%;
 }
-
-td {
-    text-align: center;
-    padding: 5px;
+.form_div textarea
+{
+width:80%;
 }
-
-.form {
-    margin-top: 20px;
+.form_div input[type="submit"]
+{
+width:80%;
 }
-
-#content {
-    width: 70%;
 }
-
-*{
-    margin: 0;
-    padding: 0;
+@media only screen and (min-width:400px) and (max-width:699px)
+{
+#wrapper
+{
+width:100%;
 }
-  
-body{
-   background: #e9eaea;
-   font-family: roboto;
-   user-select: none;
+#wrapper h1
+{
+font-size:30px;
 }
-  
-.container{
-   width: 450px;
-   margin: 30px auto;
+.form_div
+{
+width:60%;
+margin-left:20%;
 }
-  
-.signup,
-.login{
-   width: 50%;
-   background: #fff;
-   float: left;
-   height: 60px;
-   line-height: 60px;
-   text-align: center;
-   cursor: pointer;
-   text-transform: uppercase;
+.form_div input[type="text"],input[type="password"]
+{
+width:80%;
 }
-  
-.signup-form,
-.login-form{
-    background: #fff;
-    padding: 40px;
-    clear: both;
-    width: 100%;
-    box-sizing: border-box;
-    height: 400px;
+.form_div input[type="submit"]
+{
+width:80%;
 }
-  
-.input{
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-bottom: 25px;
-    border: 2px solid #e9eaea;
-    color: #3e3e40;
-    font-size: 14px;
-    outline: none;
-    transform: all 0.5s ease;
 }
-  
-.input:focus{
-    border: 2px solid #34b3a0;
+@media only screen and (min-width:100px) and (max-width:399px)
+{
+#wrapper
+{
+width:100%;
 }
-  
-.btn{
-    width: 100%;
-    background: #34b3a0;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    text-transform: uppercase;
-    color: #fff;
-    font-weight: bold;
-    letter-spacing: 1px;
-    cursor: pointer;
-    margin-bottom: 30px;
+#wrapper h1
+{
+font-size:25px;
 }
-  
-span a{
-    text-decoration: none;
-    color: #000;
+.form_div
+{
+width:90%;
+margin-left:5%;
+padding-left:0px;
+padding-right:0px;
 }
-  
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: #3e3e40;
-    font-family: roboto;
+.form_div input[type="text"],input[type="password"]
+{
+width:80%;
 }
-::-moz-placeholder { /* Firefox 19+ */
-    color: #3e3e40;
-    font-family: roboto;
+.form_div input[type="submit"]
+{
+width:80%;
 }
-:-ms-input-placeholder { /* IE 10+ */
-    color: #3e3e40;
-    font-family: roboto;
 }
-:-moz-placeholder { /* Firefox 18- */
-    color: #3e3e40;
-    font-family: roboto;
-}
-  
-  
-  

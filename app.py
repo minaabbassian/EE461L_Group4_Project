@@ -21,5 +21,12 @@ def login():
         else:
 	         return render_template('home.html',name=name1)
 
+
+@app.route('/form_signup',methods=['POST','GET'])
+def signup():
+    name1=request.form['username']
+    pwd=request.form['password']
+
+
 if __name__ == '__main__':
     app.run()
