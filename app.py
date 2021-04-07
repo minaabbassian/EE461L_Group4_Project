@@ -58,7 +58,7 @@ def create():
 
 
 #signing into existing project
-@app.route('/form_sigintoproject', methods=['POST', 'GET'])
+@app.route('/form_signintoproject', methods=['POST', 'GET'])
 def signIn():
     projId = request.form['projectId']
 
