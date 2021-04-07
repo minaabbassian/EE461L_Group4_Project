@@ -43,10 +43,12 @@ def isUsernameTaken(username):
 		
 #Function that returns TRUE if the username and password matches, otherwise returns FALSE
 def isUserInfoCorrect(username, password):
-	user = user_coll.find_one({"username": username})
-	if(user["password"] == password):
-		return True
-	return False
+	if(isUsernameTaken(username)):
+		user = user_coll.find_one({"username": username})
+		if(user["password"] == password):
+			return 'Found'
+		else: return 'Password'
+	return 'Username' 
 		
 		
 #Function that adds new user to "user_coll" if username is not already taken 
