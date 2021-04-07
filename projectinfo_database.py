@@ -49,19 +49,19 @@ def isProjectIDTaken(project_id):
 def addNewProjectToCollection(project_name, project_description, project_id):
 	if (isProjectIDTaken(project_id) == False):
 		addNewProject(project_name, project_description, project_id)
+		return "worked"
 	else:
-		print("This projectID has already been taken")
+		return "taken"
 		
 #Function that gets info on an existing project by user entering an existing projectID: 
-def getExistingProject():
-	proj_id = input('ProjectID:')
+def getExistingProject(proj_id):
+	# proj_id = input('ProjectID:')
 	if (isProjectIDTaken(proj_id) == False):
-		print("This Project does not exist")
+		return "no"
 	else:
 		project_found = project_coll.find_one({"ID": proj_id})
-		print(project_found["Name"])
-		print(project_found["Description"])
-		print(project_found["ID"])
+		return project_found["Name"] + ' ' + project_found["Description"] + ' ' + project_found["ID"]
+		
 	
 		
 	
