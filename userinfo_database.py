@@ -1,4 +1,4 @@
-#Python Code for connecting to MongoDB 
+#Python Code for accessing usernames and passwords from MongoDB
 
 #Cluster: FinalProjectGroup8
 #Databases: HWinfo, logininfo, projectinfo
