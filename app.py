@@ -20,12 +20,12 @@ def login():
 
     valid = ud.isUserInfoCorrect(name1, pwd)
     if(valid = 'Found'):
-        return render_template('home.html', name = name1)
+        return render_template('home.html', name= name1)
 
     elif(valid = 'Password'):
-        return render_template('login.html', info = 'Invalid Password')
+        return render_template('login.html', info= 'Invalid Password')
     else: 
-        return render_template('login.html', info = 'Invalid Username')
+        return render_template('login.html', info= 'Invalid Username')
     
     # if name1 not in database:
 	#     return render_template('login.html',info='Invalid User')

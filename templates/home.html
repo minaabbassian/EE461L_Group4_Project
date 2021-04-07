@@ -10,8 +10,8 @@
     <div class="form_div">
     <p class="form_label">CREATE PROJECT</p>
     <form method="post" action="/form_createproject">
-    <p><input type="text" placeholder="Enter Project ID"></p>
-    <p><input type="text" placeholder="Enter Project Description"></p>
+    <p><input type="text" name='projectID' placeholder="Enter Project ID"></p>
+    <p><input type="text" name= 'description' placeholder="Enter Project Description"></p>
     <p><input type="submit" value="CREATE"></p>
     </form>
     </div>
@@ -21,11 +21,12 @@
     <div class="form_div">
     <p class="form_label">SIGN INTO PROJECT</p>
     <form method="post" action="/form_signintoproject">
-    <p><input type="text" placeholder="Enter Project ID"></p>
+    <p><input type="text" name='projectID' placeholder="Enter Project ID"></p>
     <p><input type="submit" value="SIGN INTO"></p>
     </form>
     </div>
+
+    <A HREF="login.html">Logout</A>
     
 </div>
 </body>
-</html>
