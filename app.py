@@ -207,6 +207,11 @@ def login():
     name1=request.form['username']
     pwd=request.form['password']
 
+    if not name1:
+        return render_template('login.html', info='Please Enter a Username')
+    if not pwd:
+        return render_template('login.html', info='Please Enter a password')
+
     valid = isUserInfoCorrect(name1, pwd)
     if(valid== 'Found'):
         return render_template('home.html', name= name1)
@@ -223,6 +228,12 @@ def signup():
     name1=request.form['username']
     pwd=request.form['password']
 
+    if not name1:
+        return render_template('login.html', info='Please Enter a Username')
+    if not pwd:
+        return render_template('login.html', info='Please Enter a password')
+
+
     if (isUsernameTaken(name1)):
         return render_template('login.html', info='Username Taken')
     else:
@@ -237,6 +248,15 @@ def create():
     projId = request.form['projectID']
     desc = request.form['description']
 
+    if not projName:
+        return render_template('home.html', info='Please Enter a project Name')
+    if not projId:
+        return render_template('home.html', info='Please Enter a project Id')
+    if not desc:
+        return render_template('home.html', info='Please Enter a description')
+
+
+
     check = addNewProjectToCollection(projName, desc, projId)
     if(check== "taken"):
         return render_template('home.html', info="ProjectId taken")
@@ -249,6 +269,11 @@ def create():
 @app.route('/form_signintoproject', methods=['POST', 'GET'])
 def signIn():
     projId = request.form['projectID']
+
+    if not projId:
+        return render_template('home.html', info='Please enter a Project Id')
+    
+
     validate = getExistingProject(projId)
     if(validate== "no"):
         return render_template('home.html', info='ProjectId not found')
