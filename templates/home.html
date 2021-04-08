@@ -9,7 +9,14 @@
     
     <div class="form_div">
     <p class="form_label">CREATE PROJECT</p>
+    {% if name %}
+    <p style="color:blue">Current User: {{ name }}</p>
+    {% endif %}
+    {% if info %}
+    <p style="color:red">{{ info }}!</p>
+    {% endif %}
     <form method="post" action="/form_createproject">
+    <p><input type="text" name='projectName' placeholder="Enter Project Name"></p>
     <p><input type="text" name='projectID' placeholder="Enter Project ID"></p>
     <p><input type="text" name= 'description' placeholder="Enter Project Description"></p>
     <p><input type="submit" value="CREATE"></p>
@@ -26,7 +33,8 @@
     </form>
     </div>
 
-    <A HREF="login.html">Logout</A>
+    <A HREF="/login.html" class="external">Logout</A>
     
 </div>
 </body>
+</html>

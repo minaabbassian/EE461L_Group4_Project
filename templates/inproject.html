@@ -6,30 +6,61 @@
     </head>
     <body>
     <div id="wrapper">
-    <h1>
-        Project ID Name
-    </h1>
+    <p class="form_label">HW SET FORM</p>
+    {% if name %}
+        <p style="color:green">Project Name: {{ name }}!</p>
+     {% endif %}
     <div class="form_div">
     <p class="form_label">Checkout Hardware Sets</p>
-    <form method="post" action="/form_checkout">
-    <p><input type="text" placeholder="Enter Amount for Set1"></p>
-    <p><input type="text" placeholder="Enter Amount for Set2"></p>
-    <p><input type="submit" value="Checkout"></p>
+    <form method="post" action="/form_checkout1">
+    <p><input type="text" name="set1amount" placeholder="Enter Amount for Set1"></p>
+    {% if id %}
+        <p style="color:green">Project ID: {{ id }}!</p>
+     {% endif %}
+    <p><input type="text" name="projID" placeholder="Enter ID"></p>
+    <p><input type="submit" value="Checkout1"></p>
     </form>
+
+    <form method="post" action="/form_checkout2">
+        <p><input type="text" name="set2amount" placeholder="Enter Amount for Set2"></p>
+        {% if id %}
+            <p style="color:green">Project ID: {{ id }}!</p>
+         {% endif %}
+        <p><input type="text" name="projID" placeholder="Enter ID"></p>
+        <p><input type="submit" value="Checkout2"></p>
+        </form>
+    {% if validity %}
+        <p style="color:green">{{ validity }}!</p>
+     {% endif %}
     </div>
     <br>
     <br>
     <br>
     <div class="form_div">
-    <p class="form_label">Checkin Hardware Sets</p>
-    <form method="post" action="/form_checkin">
-     <p><input type="text" placeholder="Enter Amount for Set1"></p>
-    <p><input type="text" placeholder="Enter Amount for Set2"></p>
-    <p><input type="submit" value="CheckIn"></p>
-    </form>
-    </div>
-    <A HREF="downloads.html">Download Runnable DataSets</A>
-    <A HREF="login.html">Logout</A>
-    <A HREF="home.html">Switch Project</A>
+        <p class="form_label">Checkin Hardware Sets</p>
+    <form method="post" action="/form_checkin1">
+        <p><input type="text" name="set1amount" placeholder="Enter Amount for Set1"></p>
+        {% if id %}
+            <p style="color:green">Project ID: {{ id }}!</p>
+         {% endif %}
+        <p><input type="text" name="projID" placeholder="Enter ID"></p>
+        <p><input type="submit" value="Checkin1"></p>
+        </form>
+    
+        <form method="post" action="/form_checkin2">
+            <p><input type="text" name="set2amount" placeholder="Enter Amount for Set2"></p>
+            {% if id %}
+                <p style="color:green">Project ID: {{ id }}!</p>
+             {% endif %}
+            <p><input type="text" name="projID" placeholder="Enter ID"></p>
+            <p><input type="submit" value="Checkin2"></p>
+            </form>
+        {% if validity %}
+            <p style="color:green">{{ validity }}!</p>
+         {% endif %}
+        </div>
+    <A HREF="/downloads.html" class="external">Download Runnable DataSets</A>
+    <A HREF="/login.html" class="external">Logout</A>
+    <A HREF="/home.html" class="external">Switch Project</A>
 </body>
 </html>
