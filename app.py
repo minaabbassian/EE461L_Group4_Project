@@ -280,22 +280,22 @@ def signIn():
         return render_template('inproject.html', name=validate, id=projId)
         #Display Error
 
-#logout of session
-@app.route('/logout')
-def logout():
-    session.clear()
-    return render_template('login.html')
+# #logout of session
+# @app.route('/logout')
+# def logout():
+#     session.clear()
+#     return render_template('login.html')
 
 
-#switch to project pages
-@app.route('/switch')
-def switch():
-    return render_template('home.html')
+# #switch to project pages
+# @app.route('/switch')
+# def switch():
+#     return render_template('home.html')
 
-#go to downloads page
-@app.route('/download')
-def download():
-    return render_template('downloads.html')
+# #go to downloads page
+# @app.route('/download')
+# def download():
+#     return render_template('downloads.html')
 
 
 #check out 1
