@@ -273,7 +273,6 @@ def signIn():
     if not projId:
         return render_template('home.html', info='Please enter a Project Id')
     
-
     validate = getExistingProject(projId)
     if(validate== "no"):
         return render_template('home.html', info='ProjectId not found')

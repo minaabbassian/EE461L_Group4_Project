@@ -63,7 +63,6 @@ project_db = cluster["projectinfo"]
 #Collection: projectID
 project_coll = project_db["projectID"]
 
-
 #Function to add new project information to collection "projectID"
 def addNewProject(name, description, id):
 	#Create a new document to insert into my collection 
