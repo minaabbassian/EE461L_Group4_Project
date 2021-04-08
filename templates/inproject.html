@@ -7,6 +7,9 @@
     <body>
     <div id="wrapper">
     <p class="form_label">HW SET FORM</p>
+    {% if info %}
+    <p style="color:red">{{ info }}!</p>
+    {% endif %}
     {% if name %}
         <p style="color:green">Project Name: {{ name }}!</p>
      {% endif %}
@@ -59,8 +62,9 @@
             <p style="color:green">{{ validity }}!</p>
          {% endif %}
         </div>
-    <A HREF="/downloads.html" class="external">Download Runnable DataSets</A>
-    <A HREF="/login.html" class="external">Logout</A>
-    <A HREF="/home.html" class="external">Switch Project</A>
+    <!-- all but third work on flask -->
+    <A HREF="../download" class="external">Download Runnable DataSets</A>
+    <A HREF=".." class="external" >Logout</A>
+    <A HREF="../form_login" class="external">Switch Project</A>
 </body>
 </html>

@@ -280,11 +280,33 @@ def signIn():
         return render_template('inproject.html', name=validate, id=projId)
         #Display Error
 
+#logout of session
+@app.route('/logout')
+def logout():
+    session.clear()
+    return render_template('login.html')
+
+
+#switch to project pages
+@app.route('/switch')
+def switch():
+    return render_template('home.html')
+
+#go to downloads page
+@app.route('/download')
+def download():
+    return render_template('downloads.html')
+
 
 #check out 1
 @app.route('/form_checkout1', methods=['POST', 'GET'])
 def checkOut1():
-    set1 = int(request.form['set1amount'])
+    while True:
+        try:
+            set1 = int(request.form['set1amount'])
+            break
+        except:
+            return render_template('inproject.html', info='Please enter a valid number')
     projID = request.form['projID']
     validity = checkoutHWSet1(projID, set1)
     return render_template('inproject.html', validity=validity, id=projID)
@@ -292,7 +314,12 @@ def checkOut1():
 #check out 2
 @app.route('/form_checkout2', methods=['POST', 'GET'])
 def checkOut2():
-    set2 = int(request.form['set2amount'])
+    while True:
+        try:
+            set2 = int(request.form['set2amount'])
+            break
+        except:
+            return render_template('inproject.html', info='Please enter a valid number')
     projID = request.form['projID']
     validity = checkoutHWSet2(projID, set2)
     return render_template('inproject.html', validity=validity, id=projID)
@@ -301,7 +328,12 @@ def checkOut2():
 #check in 1
 @app.route('/form_checkin1', methods=['POST', 'GET'])
 def checkIn1():
-    set1 = int(request.form['set1amount'])
+    while True:
+        try:
+            set1 = int(request.form['set1amount'])
+            break
+        except:
+            return render_template('inproject.html', info='Please enter a valid number')
     projID = request.form['projID']
     validity = checkinHWSet1(projID, set1)
     return render_template('inproject.html', validity=validity, id=projID)
@@ -309,7 +341,12 @@ def checkIn1():
  #check in 2
 @app.route('/form_checkin2', methods=['POST', 'GET'])
 def checkIn2():
-    set2 = int(request.form['set2amount'])
+    while True:
+        try:
+            set2 = int(request.form['set2amount'])
+            break
+        except:
+            return render_template('inproject.html', info='Please enter a valid number')
     projID = request.form['projID']
     validity = checkinHWSet2(projID, set2)
     return render_template('inproject.html', validity=validity, id=projID)   
