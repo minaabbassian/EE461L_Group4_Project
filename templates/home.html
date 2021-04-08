@@ -6,12 +6,11 @@
     </head>
     <body>
     <div id="wrapper">
-    
     <div class="form_div">
-    <p class="form_label">CREATE PROJECT</p>
     {% if name %}
     <p style="color:blue">Current User: {{ name }}</p>
     {% endif %}
+    <p class="form_label">CREATE PROJECT</p>
     {% if info %}
     <p style="color:red">{{ info }}!</p>
     {% endif %}
@@ -27,17 +26,16 @@
     <br>
     <div class="form_div">
     <p class="form_label">SIGN INTO PROJECT</p>
+    {% if info2 %}
+    <p style="color:red">{{ info2 }}!</p>
+    {% endif %}
     <form method="post" action="/form_signintoproject">
     <p><input type="text" name='projectID' placeholder="Enter Project ID"></p>
     <p><input type="submit" value="SIGN INTO"></p>
     </form>
     </div>
 
-    
-    <!-- can try either of the options below, first uses app route, second checks parent folder -->
     <A HREF=".." class="external">Logout</A>
-
-
     
 </div>
 </body>

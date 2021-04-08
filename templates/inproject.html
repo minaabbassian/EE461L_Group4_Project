@@ -7,12 +7,18 @@
     <body>
     <div id="wrapper">
     <p class="form_label">HW SET FORM</p>
+    {% if hwset1 %}
+    <p style="color:blue">Availibility of HWSet1: {{ hwset1 }}</p>
+    {% endif %}
+    {% if hwset2 %}
+    <p style="color:blue">Availibility of HWSet2: {{ hwset2 }}</p>
+    {% endif %}
     {% if info %}
     <p style="color:red">{{ info }}!</p>
     {% endif %}
     {% if validity %}
-            <p style="color:blueviolet">{{ validity }}!</p>
-         {% endif %}
+        <p style="color:blueviolet">{{ validity }}!</p>
+    {% endif %}
     {% if name %}
         <p style="color:green">Project Name: {{ name }}!</p>
      {% endif %}
@@ -22,7 +28,7 @@
     <p><input type="text" name="set1amount" placeholder="Enter Amount for Set1"></p>
     {% if id %}
         <p style="color:green">Project ID: {{ id }}!</p>
-     {% endif %}
+    {% endif %}
     <p><input type="text" name="projID" placeholder="Enter ID"></p>
     <p><input type="submit" value="Checkout1"></p>
     </form>
@@ -40,6 +46,12 @@
     <br>
     <div class="form_div">
         <p class="form_label">Checkin Hardware Sets</p>
+        {% if info2 %}
+        <p style="color:red">{{ info2 }}!</p>
+        {% endif %}
+        {% if validity2 %}
+        <p style="color:blueviolet">{{ validity2 }}!</p>
+        {% endif %}
     <form method="post" action="/form_checkin1">
         <p><input type="text" name="set1amount" placeholder="Enter Amount for Set1"></p>
         {% if id %}
@@ -57,9 +69,6 @@
             <p><input type="text" name="projID" placeholder="Enter ID"></p>
             <p><input type="submit" value="Checkin2"></p>
             </form>
-        {% if validity %}
-            <p style="color:blueviolet">{{ validity }}!</p>
-         {% endif %}
         </div>
         <A HREF="../download" class="external">Download Runnable DataSets</A>
         <br>
