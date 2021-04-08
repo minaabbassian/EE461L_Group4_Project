@@ -9,7 +9,56 @@ from pymongo import MongoClient
 #Connect to MongoDB
 cluster = MongoClient("mongodb+srv://test:test@finalprojectgroup8.frm2z.mongodb.net/logininfo?retryWrites=true&w=majority")
 
-########################################################
+##########################################################################
+#CODE FOR LOGIN INFO 
+#Database: logininfo
+login_db = cluster["logininfo"]
+
+#Collection: userinfo
+user_coll = login_db["userinfo"]
+
+#Ask for user to enter username and password 
+def askForInput():
+	person_username = input('username:')
+	person_password = input('password:')
+
+
+#Function to add new user information to collection "userinfo"
+def addNewUser(username, password):
+
+	#Create a new document to insert into my collection 
+	personDocument = {
+		#add a new famous person to my collection with all the fields 
+		"username": username,
+		"password": password
+	}
+	#insert the document into my collection 
+	user_coll.insert_one(personDocument)
+
+#Function that returns TRUE if a username has already been taken by another user, otherwise returns FALSE 
+def isUsernameTaken(username):
+	if user_coll.find_one({"username": username}) == None:
+		return False
+	else:
+		return True
+		
+#Function that returns TRUE if the username and password matches, otherwise returns FALSE
+def isUserInfoCorrect(username, password):
+	user = user_coll.find_one({"username": username})
+	if(user["password"] == password):
+		return True
+	return False
+		
+		
+#Function that adds new user to "user_coll" if username is not already taken 
+def addNewUserToCollection(username, password):
+	if (isUsernameTaken(username) == False):
+		addNewUser(username, password)
+	else:
+		print("This username is already taken")
+		
+
+##########################################################################
 
 #CODE FOR PROJECT INFO 
 #Database: projectinfo
@@ -64,7 +113,7 @@ def getExistingProject():
 		print(project_found["ID"])#Ask for user to enter project name, project description, project ID 
 
 
-#####################################################
+##########################################################################
 
 #CODE FOR HW INFO 
 #Database: HWinfo
@@ -155,6 +204,8 @@ def checkinHWSet2(projectID):
 		updated_num = num_checkedout - number 
 		project_coll.update_one({"ID": projectID}, {"$set": {"HWSet2": updated_num}})
 		checkinHWSet(number, name)
+		
+##########################################################################
 
 checkoutHWSet2('123456')
 
