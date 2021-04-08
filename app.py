@@ -306,7 +306,7 @@ def checkOut1():
             set1 = int(request.form['set1amount'])
             break
         except:
-            return render_template('inproject.html', info='Please enter a valid number')
+            return render_template('inproject.html', info='Please enter a valid number for Checkout1')
     projID = request.form['projID']
     validity = checkoutHWSet1(projID, set1)
     return render_template('inproject.html', validity=validity, id=projID)
@@ -319,7 +319,7 @@ def checkOut2():
             set2 = int(request.form['set2amount'])
             break
         except:
-            return render_template('inproject.html', info='Please enter a valid number')
+            return render_template('inproject.html', info='Please enter a valid number for Checkout2')
     projID = request.form['projID']
     validity = checkoutHWSet2(projID, set2)
     return render_template('inproject.html', validity=validity, id=projID)
@@ -333,7 +333,7 @@ def checkIn1():
             set1 = int(request.form['set1amount'])
             break
         except:
-            return render_template('inproject.html', info='Please enter a valid number')
+            return render_template('inproject.html', info='Please enter a valid number for Checkin1')
     projID = request.form['projID']
     validity = checkinHWSet1(projID, set1)
     return render_template('inproject.html', validity=validity, id=projID)
@@ -346,7 +346,7 @@ def checkIn2():
             set2 = int(request.form['set2amount'])
             break
         except:
-            return render_template('inproject.html', info='Please enter a valid number')
+            return render_template('inproject.html', info='Please enter a valid number fir Checkin2')
     projID = request.form['projID']
     validity = checkinHWSet2(projID, set2)
     return render_template('inproject.html', validity=validity, id=projID)   
