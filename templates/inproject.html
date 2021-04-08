@@ -10,6 +10,9 @@
     {% if info %}
     <p style="color:red">{{ info }}!</p>
     {% endif %}
+    {% if validity %}
+            <p style="color:blueviolet">{{ validity }}!</p>
+         {% endif %}
     {% if name %}
         <p style="color:green">Project Name: {{ name }}!</p>
      {% endif %}
@@ -32,10 +35,6 @@
         <p><input type="text" name="projID" placeholder="Enter ID"></p>
         <p><input type="submit" value="Checkout2"></p>
         </form>
-    {% if validity %}
-        <p style="color:green">{{ validity }}!</p>
-     {% endif %}
-    </div>
     <br>
     <br>
     <br>
@@ -59,12 +58,14 @@
             <p><input type="submit" value="Checkin2"></p>
             </form>
         {% if validity %}
-            <p style="color:green">{{ validity }}!</p>
+            <p style="color:blueviolet">{{ validity }}!</p>
          {% endif %}
         </div>
-    <!-- all but third work on flask -->
-    <A HREF="../download" class="external">Download Runnable DataSets</A>
-    <A HREF=".." class="external" >Logout</A>
-    <A HREF="../form_login" class="external">Switch Project</A>
+        <A HREF="../download" class="external">Download Runnable DataSets</A>
+        <br>
+        <A HREF=".." class="external" >Logout</A>
+        <br>
+        <A HREF="../switch" class="external">Switch Project</A>
+
 </body>
 </html>

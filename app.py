@@ -145,19 +145,26 @@ def checkoutHWSet1(projectID, number):
     name = "HWSet1"
     project_found = project_coll.find_one({"ID": projectID})
     num_checkedout = project_found["HWSet1"]
-    updated_num = num_checkedout + number
-    project_coll.update_one({"ID": projectID}, {"$set": {"HWSet1": updated_num}})
-    checkoutHWSet(number, name)
-	
+    valid= checkoutHWSet(number, name)
+    if(valid=="valid"):
+        updated_num = num_checkedout + number
+        project_coll.update_one({"ID": projectID}, {"$set": {"HWSet1": updated_num}})
+        return "valid"
+    else: return "invalid"
+    
+
 #Function that asks user to enter how many of HWSet2 they want to check out
 def checkoutHWSet2(projectID, number):
-	name = "HWSet2"
-	project_found = project_coll.find_one({"ID": projectID})
-	num_checkedout = project_found["HWSet2"]
-	updated_num = num_checkedout + number
-	project_coll.update_one({"ID": projectID}, {"$set": {"HWSet2": updated_num}})
-	checkoutHWSet(number, name)
-	
+    name = "HWSet2"
+    project_found = project_coll.find_one({"ID": projectID})
+    num_checkedout = project_found["HWSet2"]
+    valid= checkoutHWSet(number, name)
+    if(valid=="valid"):
+        updated_num = num_checkedout + number
+        project_coll.update_one({"ID": projectID}, {"$set": {"HWSet2": updated_num}})
+        return "valid"
+    else: return "invalid"
+
 #Function that handles checking in a HWSet
 #Updates availablility of the HWSet while checking in 
 def checkinHWSet(number, name):
@@ -207,11 +214,6 @@ def login():
     name1=request.form['username']
     pwd=request.form['password']
 
-    if not name1:
-        return render_template('login.html', info='Please Enter a Username')
-    if not pwd:
-        return render_template('login.html', info='Please Enter a password')
-
     valid = isUserInfoCorrect(name1, pwd)
     if(valid== 'Found'):
         return render_template('home.html', name= name1)
@@ -228,12 +230,6 @@ def signup():
     name1=request.form['username']
     pwd=request.form['password']
 
-    if not name1:
-        return render_template('login.html', info='Please Enter a Username')
-    if not pwd:
-        return render_template('login.html', info='Please Enter a password')
-
-
     if (isUsernameTaken(name1)):
         return render_template('login.html', info='Username Taken')
     else:
@@ -248,15 +244,6 @@ def create():
     projId = request.form['projectID']
     desc = request.form['description']
 
-    if not projName:
-        return render_template('home.html', info='Please Enter a project Name')
-    if not projId:
-        return render_template('home.html', info='Please Enter a project Id')
-    if not desc:
-        return render_template('home.html', info='Please Enter a description')
-
-
-
     check = addNewProjectToCollection(projName, desc, projId)
     if(check== "taken"):
         return render_template('home.html', info="ProjectId taken")
@@ -269,10 +256,6 @@ def create():
 @app.route('/form_signintoproject', methods=['POST', 'GET'])
 def signIn():
     projId = request.form['projectID']
-
-    if not projId:
-        return render_template('home.html', info='Please enter a Project Id')
-    
     validate = getExistingProject(projId)
     if(validate== "no"):
         return render_template('home.html', info='ProjectId not found')
@@ -280,22 +263,29 @@ def signIn():
         return render_template('inproject.html', name=validate, id=projId)
         #Display Error
 
-# #logout of session
-# @app.route('/logout')
-# def logout():
-#     session.clear()
-#     return render_template('login.html')
+
+#logout of session
+@app.route('/logout')
+def logout():
+    session.clear()
+    return render_template('login.html')
+
+#switch to project pages
+@app.route('/switch')
+def switch():
+    return render_template('home.html')
+
+#go to downloads page
+@app.route('/download')
+def download():
+    return render_template('downloads.html')
+
+#go to downloads page
+@app.route('/return1')
+def return1():
+    return render_template('inproject.html')
 
 
-# #switch to project pages
-# @app.route('/switch')
-# def switch():
-#     return render_template('home.html')
-
-# #go to downloads page
-# @app.route('/download')
-# def download():
-#     return render_template('downloads.html')
 
 
 #check out 1
@@ -306,7 +296,7 @@ def checkOut1():
             set1 = int(request.form['set1amount'])
             break
         except:
-            return render_template('inproject.html', info='Please enter a valid number for Checkout1')
+            return render_template('inproject.html', info='Please enter a valid number')
     projID = request.form['projID']
     validity = checkoutHWSet1(projID, set1)
     return render_template('inproject.html', validity=validity, id=projID)
@@ -319,7 +309,7 @@ def checkOut2():
             set2 = int(request.form['set2amount'])
             break
         except:
-            return render_template('inproject.html', info='Please enter a valid number for Checkout2')
+            return render_template('inproject.html', info='Please enter a valid number')
     projID = request.form['projID']
     validity = checkoutHWSet2(projID, set2)
     return render_template('inproject.html', validity=validity, id=projID)
@@ -333,7 +323,7 @@ def checkIn1():
             set1 = int(request.form['set1amount'])
             break
         except:
-            return render_template('inproject.html', info='Please enter a valid number for Checkin1')
+            return render_template('inproject.html', info='Please enter a valid number')
     projID = request.form['projID']
     validity = checkinHWSet1(projID, set1)
     return render_template('inproject.html', validity=validity, id=projID)
@@ -346,7 +336,7 @@ def checkIn2():
             set2 = int(request.form['set2amount'])
             break
         except:
-            return render_template('inproject.html', info='Please enter a valid number fir Checkin2')
+            return render_template('inproject.html', info='Please enter a valid number')
     projID = request.form['projID']
     validity = checkinHWSet2(projID, set2)
     return render_template('inproject.html', validity=validity, id=projID)   
