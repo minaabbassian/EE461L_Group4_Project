@@ -231,6 +231,15 @@ def getSessionID():
     session_found = curr_coll.find_one({"Session": "first"})
     proj_id = session_found["ID"]
     return (proj_id)
+
+#changes the ProjectName to the Project Name in session 
+def changeSessionProjectName(projName):
+    curr_coll.update_one({"Session": "first"}, {"$set": {"ProjectName": projName}})
+
+def getSessionProjectName():
+    session_found = curr_coll.find_one({"Session": "first"})
+    proj_name = session_found["ProjectName"]
+    return (proj_name)
 ##########################################################################
 
 app = Flask(__name__)
@@ -298,6 +307,7 @@ def create():
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         changeSessionID(projId)
+        changeSessionProjectName(projName)
         return render_template('inproject.html', name=projName, id=projId, hwset1=hw_set1, hwset2=hw_set2) 
      
 
@@ -315,6 +325,7 @@ def signIn():
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         changeSessionID(projId)
+        changeSessionProjectName(validate)
         return render_template('inproject.html', name=validate, id=projId, hwset1=hw_set1, hwset2=hw_set2) 
         
 
@@ -342,7 +353,8 @@ def return1():
     hw_set1 = remainingHWSet1()
     hw_set2 = remainingHWSet2()
     projId = getSessionID()
-    return render_template('inproject.html', id=projId, hwset1=hw_set1, hwset2=hw_set2)
+    projName = getSessionProjectName()
+    return render_template('inproject.html', name=projName, id=projId, hwset1=hw_set1, hwset2=hw_set2)
 
 #check out HWSet1
 @app.route('/form_checkout1', methods=['POST', 'GET'])
@@ -352,12 +364,14 @@ def checkOut1():
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info='Please enter Project ID', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info='Please enter Project ID', hwset1=hw_set1, hwset2=hw_set2)
     elif (projID != getSessionID()):
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info='Please enter the correct Project ID', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info='Please enter the correct Project ID', hwset1=hw_set1, hwset2=hw_set2)
 
     while True:
         try:
@@ -367,19 +381,22 @@ def checkOut1():
             hw_set1 = remainingHWSet1()
             hw_set2 = remainingHWSet2()
             projId = getSessionID()
-            return render_template('inproject.html', id=projId, info='Please enter a Valid Number', hwset1=hw_set1, hwset2=hw_set2) 
+            projName = getSessionProjectName()
+            return render_template('inproject.html', name=projName, id=projId, info='Please enter a Valid Number', hwset1=hw_set1, hwset2=hw_set2) 
     #check for negative integers
     if (set1 < 0):
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
     projID = request.form['projID']
     validity = checkoutHWSet1(projID, set1)
     hw_set1 = remainingHWSet1()
     hw_set2 = remainingHWSet2()
     projId = getSessionID()
-    return render_template('inproject.html', id=projId, validity=validity, hwset1=hw_set1, hwset2=hw_set2) 
+    projName = getSessionProjectName()
+    return render_template('inproject.html', name=projName, id=projId, validity=validity, hwset1=hw_set1, hwset2=hw_set2) 
 
 #check out HWSet2
 @app.route('/form_checkout2', methods=['POST', 'GET'])
@@ -389,12 +406,14 @@ def checkOut2():
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info='Please enter Project ID', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info='Please enter Project ID', hwset1=hw_set1, hwset2=hw_set2)
     elif (projID != getSessionID()):
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info='Please enter the correct Project ID', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info='Please enter the correct Project ID', hwset1=hw_set1, hwset2=hw_set2)
     while True:
         try:
             set2 = int(request.form['set2amount'])
@@ -403,19 +422,22 @@ def checkOut2():
             hw_set1 = remainingHWSet1()
             hw_set2 = remainingHWSet2()
             projId = getSessionID()
-            return render_template('inproject.html', id=projId, info='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
+            projName = getSessionProjectName()
+            return render_template('inproject.html', name=projName, id=projId, info='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
     #check for negative integers
     if (set2 < 0):
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
     projID = request.form['projID']
     validity = checkoutHWSet2(projID, set2)
     hw_set1 = remainingHWSet1()
     hw_set2 = remainingHWSet2()
     projId = getSessionID()
-    return render_template('inproject.html', validity=validity, id=projId, hwset1=hw_set1, hwset2=hw_set2)
+    projName = getSessionProjectName()
+    return render_template('inproject.html', name=projName, validity=validity, id=projId, hwset1=hw_set1, hwset2=hw_set2)
 
 
 #check in 1
@@ -426,12 +448,14 @@ def checkIn1():
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info2='Please enter Project ID', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info2='Please enter Project ID', hwset1=hw_set1, hwset2=hw_set2)
     elif (projID != getSessionID()):
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info2='Please enter the correct Project ID', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info2='Please enter the correct Project ID', hwset1=hw_set1, hwset2=hw_set2)
     while True:
         try:
             set1 = int(request.form['set1amount'])
@@ -440,19 +464,22 @@ def checkIn1():
             hw_set1 = remainingHWSet1()
             hw_set2 = remainingHWSet2()
             projId = getSessionID()
-            return render_template('inproject.html', id=projId, info2='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
+            projName = getSessionProjectName()
+            return render_template('inproject.html', name=projName, id=projId, info2='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
     #check for negative integers
     if (set1 < 0):
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info2='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info2='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
     projID = request.form['projID']
     validity2 = checkinHWSet1(projID, set1)
     hw_set1 = remainingHWSet1()
     hw_set2 = remainingHWSet2()
     projId = getSessionID()
-    return render_template('inproject.html', validity2=validity2, id=projId, hwset1=hw_set1, hwset2=hw_set2)
+    projName = getSessionProjectName()
+    return render_template('inproject.html', name=projName, validity2=validity2, id=projId, hwset1=hw_set1, hwset2=hw_set2)
 
 #check in 2
 @app.route('/form_checkin2', methods=['POST', 'GET'])
@@ -462,12 +489,14 @@ def checkIn2():
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info2='Please enter Project ID', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info2='Please enter Project ID', hwset1=hw_set1, hwset2=hw_set2)
     elif (projID != getSessionID()):
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info2='Please enter the correct Project ID', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info2='Please enter the correct Project ID', hwset1=hw_set1, hwset2=hw_set2)
     while True:
         try:
             set2 = int(request.form['set2amount'])
@@ -476,19 +505,22 @@ def checkIn2():
             hw_set1 = remainingHWSet1()
             hw_set2 = remainingHWSet2()
             projId = getSessionID()
-            return render_template('inproject.html', id=projId, info2='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
+            projName = getSessionProjectName()
+            return render_template('inproject.html', name=projName, id=projId, info2='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
     #check for negative integers
     if (set2 < 0):
         hw_set1 = remainingHWSet1()
         hw_set2 = remainingHWSet2()
         projId = getSessionID()
-        return render_template('inproject.html', id=projId, info2='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
+        projName = getSessionProjectName()
+        return render_template('inproject.html', name=projName, id=projId, info2='Please enter a valid number', hwset1=hw_set1, hwset2=hw_set2)
     projID = request.form['projID']
     validity2 = checkinHWSet2(projID, set2)
     hw_set1 = remainingHWSet1()
     hw_set2 = remainingHWSet2()
     projId = getSessionID()
-    return render_template('inproject.html', id=projId, validity2=validity2, hwset1=hw_set1, hwset2=hw_set2)   
+    projName = getSessionProjectName()
+    return render_template('inproject.html', name=projName, id=projId, validity2=validity2, hwset1=hw_set1, hwset2=hw_set2)   
 
 
 if __name__ == '__main__':
