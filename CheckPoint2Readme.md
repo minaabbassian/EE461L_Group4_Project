@@ -11,5 +11,4 @@
 
 **Known Issues:**
 - Currently have no encryption mechanism for username/password.
-- Error in displaying preview of dataset in Downloads form.
 - After clicking Logout and being returned to the home page, the user can still manually navigate to other forms. Session is not being cleared properly.
