@@ -11,3 +11,4 @@
 
 **Known Issues:**
 - Currently have no encryption mechanism for username/password.
+- Error in displaying preview of dataset in Downloads form.
