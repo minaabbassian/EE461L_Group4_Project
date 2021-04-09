@@ -5,6 +5,8 @@
     <link href="../static/main.css" type="text/css" rel="stylesheet"/>
     
     <style>
+          body {font-family: Arial, Helvetica, sans-serif; text-align: center;}
+
         ul {
           list-style-type: none;
           margin: 0;
@@ -32,6 +34,14 @@
         .active {
           background-color: #4CAF50;
         }
+
+        h1, h2 {
+          text-align: center;
+        }
+
+        .sideBySideForm{
+          display: inline-block;
+        }
     </style>
 
     </head>
@@ -41,24 +51,27 @@
             <li style="float:right"><A HREF="../download" class="external">Download Runnable DataSets</A></li>
             <li style="float:right"><A HREF="../switch" class="external">Switch Project</A></li>
         </ul>
-    <div id="wrapper">
-    <p class="form_label">HW SET FORM</p>
+    <h1 class="form_label">HW SET FORM</h1>
     {% if hwset1 %}
-    <p style="color:blue">Availibility of HWSet1: {{ hwset1 }}</p>
+    <h2 style="color:blue">Availibility of HWSet1: {{ hwset1 }}</h2>
     {% endif %}
     {% if hwset2 %}
-    <p style="color:blue">Availibility of HWSet2: {{ hwset2 }}</p>
+    <h2 style="color:blue">Availibility of HWSet2: {{ hwset2 }}</h2>
     {% endif %}
     {% if info %}
-    <p style="color:red">{{ info }}!</p>
+    <h2 style="color:red">{{ info }}!</h2>
     {% endif %}
     {% if validity %}
-        <p style="color:blueviolet">{{ validity }}!</p>
+        <h2 style="color:blueviolet">{{ validity }}!</h2>
     {% endif %}
     {% if name %}
-        <p style="color:green">Project Name: {{ name }}!</p>
+        <h2 style="color:green">Project Name: {{ name }}!</h2>
      {% endif %}
-    <div class="form_div">
+    
+    
+    
+    
+    <div class="form_div sideBySideForm">
     <p class="form_label">Checkout Hardware Sets</p>
     <form method="post" action="/form_checkout1">
     <p><input type="text" name="set1amount" placeholder="Enter Amount for Set1"></p>
@@ -77,10 +90,12 @@
         <p><input type="text" name="projID" placeholder="Enter ID"></p>
         <p><input type="submit" value="Checkout2"></p>
         </form>
+    <!-- <br>
     <br>
-    <br>
-    <br>
-    <div class="form_div">
+    <br> -->
+
+
+    <div class="form_div sideBySideForm">
         <p class="form_label">Checkin Hardware Sets</p>
         {% if info2 %}
         <p style="color:red">{{ info2 }}!</p>
@@ -105,7 +120,6 @@
             <p><input type="text" name="projID" placeholder="Enter ID"></p>
             <p><input type="submit" value="Checkin2"></p>
             </form>
-        </div>
 
 </body>
 </html>
