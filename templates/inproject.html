@@ -3,8 +3,44 @@
     <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <link href="../static/main.css" type="text/css" rel="stylesheet"/>
+    
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+        
+        .active {
+          background-color: #4CAF50;
+        }
+    </style>
+
     </head>
     <body>
+        <ul>
+            <li style="float:right"><A class="active" HREF=".." class="external" >Logout</A></li>
+            <li style="float:right"><A HREF="../download" class="external">Download Runnable DataSets</A></li>
+            <li style="float:right"><A HREF="../switch" class="external">Switch Project</A></li>
+        </ul>
     <div id="wrapper">
     <p class="form_label">HW SET FORM</p>
     {% if hwset1 %}
@@ -70,11 +106,6 @@
             <p><input type="submit" value="Checkin2"></p>
             </form>
         </div>
-        <A HREF="../download" class="external">Download Runnable DataSets</A>
-        <br>
-        <A HREF=".." class="external" >Logout</A>
-        <br>
-        <A HREF="../switch" class="external">Switch Project</A>
 
 </body>
 </html>

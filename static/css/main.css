@@ -31,7 +31,7 @@ margin-left:320px;
 padding:10px;
 background-color:#424949;
 }
-.form_div .form_label
+.form_div 
 {
 margin:15px;
 margin-bottom:30px;
@@ -39,6 +39,19 @@ font-size:25px;
 font-weight:bold;
 color:white;
 text-decoration:underline;
+float:right;
+text-align: right;
+}
+.form_label
+{
+margin:15px;
+margin-bottom:30px;
+font-size:25px;
+font-weight:bold;
+color:white;
+text-decoration:underline;
+float:left;
+text-align: left;
 }
 .form_div input[type="text"],input[type="password"]
 {
@@ -60,6 +73,15 @@ background-color:#7F8C8D;
 border-bottom:3px solid #616A6B;
 color:white;
 font-weight:bold;
+}
+
+.alignleft {
+	float: left;
+    text-align: left;
+}
+.alignright {
+	float: right;
+    text-align: right;
 }
 
 @media only screen and (min-width:700px) and (max-width:995px)
