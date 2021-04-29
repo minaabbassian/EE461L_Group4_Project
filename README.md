@@ -71,8 +71,11 @@ Futhermore, the hardware set page should alert with errors that display "valid" 
 Troubleshooting and Questions:
 
 Contact Sarah Orsak
+
 sarahorsak@utexas.edu
+
 214-592-2292 
+
 For further questions or development problems. 
 
 
