@@ -60,12 +60,16 @@ For example, if you input the wrong login, there can appear "invalid password" o
 
 Also, if you enter a project ID that does not exist, it will alert "ProjectId not found", and if you create a project with an existing ID, it should show 
 "ProjectID taken"
+
 ![image](https://user-images.githubusercontent.com/45637628/116607120-3e448b00-a8f7-11eb-8a7c-832f533dfd5d.png)
+
+
 
 Futhermore, the hardware set page should alert with errors that display "valid" or "invalid" based upon checkout and checkin requests. 
 
 
 Troubleshooting and Questions:
+
 Contact Sarah Orsak
 sarahorsak@utexas.edu
 214-592-2292 
