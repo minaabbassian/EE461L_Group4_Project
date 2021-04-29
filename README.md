@@ -93,12 +93,16 @@ Collection: userinfo (stores username and password for every user)
 
 projectinfo
 Collection: projectID (stores project name, project description, project ID, #HWSet1 checked out, and #HWSet2 checked out for every project created)
+![image](https://user-images.githubusercontent.com/48300313/116608511-e3ac2e80-a8f8-11eb-9c32-b6bdfd1fea15.png)
 
 HWinfo 
 Collection: HWSets (stores name of HWSet and #available of each HWSet)
+![image](https://user-images.githubusercontent.com/48300313/116608581-fc1c4900-a8f8-11eb-97ff-cf67c3691811.png)
 
 currentinfo
 Collection: currentsession (stores the current username of the session and the projectID of the current project in session)
+![image](https://user-images.githubusercontent.com/48300313/116608611-08080b00-a8f9-11eb-8c31-43498bf6c682.png)
+
 
 FrontEnd implemented with HTML
 BackEnd implemented with Python Flask
