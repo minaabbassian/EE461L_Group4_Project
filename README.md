@@ -31,6 +31,7 @@ You will input the number you want checked in or out as well as the Project ID t
 ![image](https://user-images.githubusercontent.com/45637628/116601626-51a02800-a8f0-11eb-8cfb-3bcafb497216.png)
 
 AS you check in or check out, you will see the availabilities update.
+
 ![image](https://user-images.githubusercontent.com/45637628/116601847-90ce7900-a8f0-11eb-9fdc-e6ae88b453a7.png)
 
 Next, at the top, you may have noticed the link to the page "Download Runnable DataSets". Upon clicking on this, there is a list of datasets from physionet displayed with their descriptions. You can directly click on the link, and then the downloads should begin immediately. This is used for testing. 
