@@ -15,7 +15,37 @@ There should also be functionality to logout, switch user, switch project, go ba
 
 So, Users should get started!
 
-Databases: 
+![image](https://user-images.githubusercontent.com/45637628/116601222-de96b180-a8ef-11eb-976f-1840f0baaf71.png)
+
+First, one will sign-up/login
+![image](https://user-images.githubusercontent.com/45637628/116601331-fff79d80-a8ef-11eb-8dea-7994b9a0c4a3.png)
+
+Next, you will be presented with the project login page. Verify that your username is at the top! 
+![image](https://user-images.githubusercontent.com/45637628/116601408-19004e80-a8f0-11eb-9f55-3823597212d5.png)
+
+You can either create a project or sign into one. 
+![image](https://user-images.githubusercontent.com/45637628/116601503-333a2c80-a8f0-11eb-9ebc-7bc27cfd3c15.png)
+
+Next, you will be presented with the hardware sets. You can either check out or check in sets based upon the availability's displayed at the top. 
+You will input the number you want checked in or out as well as the Project ID that you are in. 
+![image](https://user-images.githubusercontent.com/45637628/116601626-51a02800-a8f0-11eb-8cfb-3bcafb497216.png)
+
+AS you check in or check out, you will see the availabilities update.
+![image](https://user-images.githubusercontent.com/45637628/116601847-90ce7900-a8f0-11eb-9fdc-e6ae88b453a7.png)
+
+Next, at the top, you may have noticed the link to the page "Download Runnable DataSets". Upon clicking on this, there is a list of datasets from physionet displayed with their descriptions. You can directly click on the link, and then the downloads should begin immediately. This is used for testing. 
+![image](https://user-images.githubusercontent.com/45637628/116601947-ab085700-a8f0-11eb-8f81-ec4891a607ef.png)
+
+After all of this, at the top, there are selections to return, switch project, or logout. This is your turn to play around with our application for your best use!
+![image](https://user-images.githubusercontent.com/45637628/116602091-df7c1300-a8f0-11eb-8859-52a7b6354e58.png)
+
+
+
+
+
+IMPLEMENTATION INFORMATION:
+
+Databases (Using MongoDB): 
 Logininfo
 projectinfo
 HWinfo
@@ -32,4 +62,8 @@ Collection: HWSets (stores name of HWSet and #available of each HWSet)
 
 currentinfo
 Collection: currentsession (stores the current username of the session and the projectID of the current project in session)
+
+FrontEnd implemented with HTML
+BackEnd implemented with Python Flask
+Deployed to Heroku
 
