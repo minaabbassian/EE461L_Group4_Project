@@ -51,21 +51,15 @@
             <li style="float:right"><A HREF="../download" class="external">Download Runnable DataSets</A></li>
             <li style="float:right"><A HREF="../switch" class="external">Switch Project</A></li>
         </ul>
-    <h1 class="form_label">HW SET FORM</h1>
+    <h1 class="form_label"><u>HW SET FORM</u></h1>
     {% if hwset1 %}
     <h2 style="color:blue">Availability of HWSet1: {{ hwset1 }}</h2>
     {% endif %}
     {% if hwset2 %}
     <h2 style="color:blue">Availability of HWSet2: {{ hwset2 }}</h2>
     {% endif %}
-    {% if info %}
-    <h2 style="color:red">{{ info }}!</h2>
-    {% endif %}
-    {% if validity %}
-        <h2 style="color:blueviolet">{{ validity }}!</h2>
-    {% endif %}
     {% if name %}
-        <h2 style="color:green">Project Name: {{ name }}!</h2>
+        <h2 style="color:green"><u>Project Name: {{ name }}</u></h2>
     {% endif %}
     {% if checkedSet1 %}
     <h2 style="color:green">Number of HWSet1 Checked Out: {{ checkedSet1 }}</h2>
@@ -77,6 +71,12 @@
     
     <div class="form_div sideBySideForm">
     <p class="form_label"><u>Checkout Hardware Sets</u></p>
+    {% if info %}
+    <h2 style="color:red; font-size:15px;"><i>{{ info }}!</i></h2>
+    {% endif %}
+    {% if validity %}
+        <h2 style="color:blueviolet; font-size:15px;"><i>{{ validity }}!</i></h2>
+    {% endif %}
     <form method="post" action="/form_checkout1">
     <p><input type="text" name="set1amount" placeholder="Enter Amount for Set1"></p>
     {% if id %}
@@ -102,10 +102,10 @@
     <div class="form_div sideBySideForm">
         <p class="form_label"><u>Checkin Hardware Sets</u></p>
         {% if info2 %}
-        <p style="color:red">{{ info2 }}!</p>
+        <h2 style="color:red; font-size:15px;"><i>{{ info2 }}!</i></h2>
         {% endif %}
         {% if validity2 %}
-        <p style="color:blueviolet">{{ validity2 }}!</p>
+        <h2 style="color:blueviolet; font-size:15px;"><i>{{ validity2 }}!</i></h2>
         {% endif %}
     <form method="post" action="/form_checkin1">
         <p><input type="text" name="set1amount" placeholder="Enter Amount for Set1"></p>
