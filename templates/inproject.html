@@ -5,8 +5,7 @@
     <link href="../static/main.css" type="text/css" rel="stylesheet"/>
     
     <style>
-          body {font-family: Arial, Helvetica, sans-serif; text-align: center;}
-
+        body {font-family: Arial, Helvetica, sans-serif; text-align: center; background-color: lightblue;}
         ul {
           list-style-type: none;
           margin: 0;
@@ -39,6 +38,34 @@
           text-align: center;
         }
 
+        .container {
+          margin-left: 500px;
+          margin-right: 500px;
+          padding: 15px;
+          background-color: white;
+          border: 3px solid #4CAF50;
+        }
+
+        .container1 {
+          margin-left: 500px;
+          margin-right: 500px;
+          padding: 15px;
+          background-color: white;
+          border: 3px solid blue;
+        }
+
+        .floatContainer {
+          border: 3px solid blue;
+          padding: 20px;
+        }
+
+        .floatChild {
+          width: 50%;
+          float: left;
+          padding: 20px;
+          border: 2px solid red;
+        }
+
         .sideBySideForm{
           display: inline-block;
         }
@@ -52,25 +79,36 @@
             <li style="float:right"><A HREF="../switch" class="external">Switch Project</A></li>
         </ul>
     <h1 class="form_label"><u>HW SET FORM</u></h1>
+
+    <div class="container1">
     {% if hwset1 %}
     <h2 style="color:blue">Availability of HWSet1: {{ hwset1 }}</h2>
     {% endif %}
     {% if hwset2 %}
     <h2 style="color:blue">Availability of HWSet2: {{ hwset2 }}</h2>
     {% endif %}
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container1">
     {% if name %}
-        <h2 style="color:green"><u>Project Name: {{ name }}</u></h2>
+        <h2 style="color:blue"><u>Project Name: {{ name }}</u></h2>
     {% endif %}
     {% if checkedSet1 %}
-    <h2 style="color:green">Number of HWSet1 Checked Out: {{ checkedSet1 }}</h2>
+    <h2 style="color:blue; font-size:15px;">Number of HWSet1 Checked Out: {{ checkedSet1 }}</h2>
     {% endif %}
     {% if checkedSet2 %}
-    <h2 style="color:green">Number of HWSet2 Checked Out: {{ checkedSet2 }}</h2>
+    <h2 style="color:blue; font-size:15px;">Number of HWSet2 Checked Out: {{ checkedSet2 }}</h2>
     {% endif %}
+    </div>
+
+    <br>
+    <br>
     
-    
-    <div class="form_div sideBySideForm">
-    <p class="form_label"><u>Checkout Hardware Sets</u></p>
+    <div class="container">
+    <p class="form_label"><u><b>Checkout Hardware Sets</b></u></p>
     {% if info %}
     <h2 style="color:red; font-size:15px;"><i>{{ info }}!</i></h2>
     {% endif %}
@@ -80,7 +118,7 @@
     <form method="post" action="/form_checkout1">
     <p><input type="text" name="set1amount" placeholder="Enter Amount for Set1"></p>
     {% if id %}
-        <p style="color:green">Project ID: {{ id }}!</p>
+        <p style="color:green"><u>Project ID:</u> {{ id }}</p>
     {% endif %}
     <p><input type="text" name="projID" placeholder="Enter ID"></p>
     <p><input type="submit" value="Checkout1"></p>
@@ -89,18 +127,21 @@
     <form method="post" action="/form_checkout2">
         <p><input type="text" name="set2amount" placeholder="Enter Amount for Set2"></p>
         {% if id %}
-            <p style="color:green">Project ID: {{ id }}!</p>
+            <p style="color:green"><u>Project ID:</u> {{ id }}</p>
          {% endif %}
         <p><input type="text" name="projID" placeholder="Enter ID"></p>
         <p><input type="submit" value="Checkout2"></p>
         </form>
+    </div>
     <!-- <br>
     <br>
     <br> -->
 
+    <br>
+    <br>
 
-    <div class="form_div sideBySideForm">
-        <p class="form_label"><u>Checkin Hardware Sets</u></p>
+    <div class="container">
+        <p class="form_label"><u><b>Checkin Hardware Sets</b></u></p>
         {% if info2 %}
         <h2 style="color:red; font-size:15px;"><i>{{ info2 }}!</i></h2>
         {% endif %}
@@ -110,7 +151,7 @@
     <form method="post" action="/form_checkin1">
         <p><input type="text" name="set1amount" placeholder="Enter Amount for Set1"></p>
         {% if id %}
-            <p style="color:green">Project ID: {{ id }}!</p>
+            <p style="color:green"><u>Project ID:</u> {{ id }}</p>
          {% endif %}
         <p><input type="text" name="projID" placeholder="Enter ID"></p>
         <p><input type="submit" value="Checkin1"></p>
@@ -119,11 +160,12 @@
         <form method="post" action="/form_checkin2">
             <p><input type="text" name="set2amount" placeholder="Enter Amount for Set2"></p>
             {% if id %}
-                <p style="color:green">Project ID: {{ id }}!</p>
+                <p style="color:green"><u>Project ID:</u> {{ id }}</p>
              {% endif %}
             <p><input type="text" name="projID" placeholder="Enter ID"></p>
             <p><input type="submit" value="Checkin2"></p>
             </form>
+    </div>
 
 </body>
 </html>
