@@ -88,10 +88,11 @@ HWinfo
 currentinfo
 
 Logininfo 
-Collection: userinfo (stores usernames and passwords) 
+Collection: userinfo (stores username and password for every user) 
+<img width="465" alt="logininfo" src="https://user-images.githubusercontent.com/48300313/116608126-713b4e80-a8f8-11eb-9bba-b2dfd261a68f.png">
 
 projectinfo
-Collection: projectID (stores project name, project description, project ID, #HWSet1 checked out, and #HWSet2 checked out)
+Collection: projectID (stores project name, project description, project ID, #HWSet1 checked out, and #HWSet2 checked out for every project created)
 
 HWinfo 
 Collection: HWSets (stores name of HWSet and #available of each HWSet)
