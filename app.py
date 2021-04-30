@@ -357,7 +357,10 @@ def signIn():
 #logout of session
 @app.route('/logout')
 def logout():
-    session.clear()
+    #session.clear()
+    changeSessionUsername("")
+    changeSessionProjectName("")
+    changeSessionID("")
     return render_template('login.html')
 
 #switch to project pages
