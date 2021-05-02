@@ -1,3 +1,5 @@
+#This file is the main application file. This contains all of our functionality.
+
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_pymongo import PyMongo
@@ -107,6 +109,7 @@ hw_db = cluster["HWinfo"]
 hw_coll = hw_db["HWSets"]
 
 #Function to add a HWSet to the collection, each start with 100 available
+#This is where we define the attributes for a HW set if we wanted to add more. 
 def addHWSet(name):
 	#Create a new document to insert into my collection 
 	hwDocument = {
@@ -118,6 +121,7 @@ def addHWSet(name):
 	hw_coll.insert_one(hwDocument)
 
 #Function that adds HWSet1 and HWSet2 to the collection
+#****To add additional HWSets, this is where we could add. 
 def addHWSet1and2():
 	addHWSet("HWSet1")
 	addHWSet("HWSet2")
@@ -134,7 +138,7 @@ def checkoutHWSet(number, name):
 		hw_coll.update_one({"Name": name}, {"$set": {"Available": updated_num}})
 		return "valid"
 		
-#Function that asks user to enter how many of HWSet1 they want to check out
+#Function HWSet1 check out
 def checkoutHWSet1(projectID, number):
     name = "HWSet1"
     project_found = project_coll.find_one({"ID": projectID})
@@ -146,7 +150,7 @@ def checkoutHWSet1(projectID, number):
         return "valid"
     else: return "invalid"
     
-#Function that asks user to enter how many of HWSet2 they want to check out
+#Function HWSet2 check out
 def checkoutHWSet2(projectID, number):
     name = "HWSet2"
     project_found = project_coll.find_one({"ID": projectID})
@@ -199,7 +203,7 @@ def getCheckedOutHWSet2(projID):
         return("none")
     return (hw_checked_out)
 
-#Function that asks user to enter how many of HWSet1 they want to check in
+#Function HWSet1 check in
 def checkinHWSet1(projectID, number):
     name = "HWSet1"
     project_found = project_coll.find_one({"ID": projectID})
@@ -211,7 +215,7 @@ def checkinHWSet1(projectID, number):
         project_coll.update_one({"ID": projectID}, {"$set": {"HWSet1": updated_num}})
         return (checkinHWSet(number, name))
 	
-#Function that asks user to enter how many of HWSet2 they want to check in
+#Function HWSet2 check in
 def checkinHWSet2(projectID, number):
     name = "HWSet2"
     project_found = project_coll.find_one({"ID": projectID})
@@ -259,6 +263,54 @@ def getSessionProjectName():
     proj_name = session_found["ProjectName"]
     return (proj_name)
 ##########################################################################
+#POTENTIAL CODE FOR BILLING INFO 
+
+#Database: projectinfo
+#project_db = cluster["projectinfo"]
+#Collection: projectID
+#project_coll = project_db["projectID"]
+
+#Function to add new project information to collection "projectID"
+#def addNewProject(name, description, id):
+	#Create a new document to insert into my collection 
+#	projectDocument = {
+		#add a new project with fields for name, description, projectID, #HWSet1, #HWSet2 
+#		"Name": name,
+#		"Description": description,
+#		"ID": id,
+#		"HWSet1": 0,
+#		"HWSet2": 0
+#       "Credits": 50 *** This is where we could control each HWSet checkout. Each project could potentially start with 50 credits, and then we would adjust 
+#          our HW set code to only allow checkout upon approx credits. 
+#	}
+
+#Upon running out of credits, we would show a potential area to enter credit card information. This credit card information would be correlated with the user. 
+#This could be an optional input upon signing up - but would make process easier
+#Then when checking out, we could check if user has credit number associated, and if not then prompt.
+#After this, then update the credits per project. Request checkout again.
+#CODE FOR LOGIN INFO 
+#Database: logininfo
+#login_db = cluster["logininfo"]
+
+#Collection: userinfo
+
+#user_coll = login_db["userinfo"]
+
+#Function to add new user information to collection "userinfo"
+#def addNewUser(username, password):
+	#Create a new document to insert into my collection 
+#	personDocument = {
+		#add a new famous person to my collection with all the fields 
+#		"username": username,
+#		"password": password,
+#       "credit_num": credit_number ** Add this field to store a credit card number with a user. 
+#	}
+
+
+
+
+##########################################################################
+
 
 app = Flask(__name__)
 
