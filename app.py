@@ -426,7 +426,7 @@ def switch():
 def download():
     return render_template('downloads.html')
 
-#go to downloads page
+#return to project page
 @app.route('/return1')
 def return1():
     hw_set1 = remainingHWSet1()
